@@ -20,7 +20,23 @@ const actions = {
                     resolve(response.data)
                 })
         })
-    }
+    },
+    simpanTodo({commit}, payload){
+        return new Promise((resolve, reject) => {
+            Axios.post('api/todo', payload)
+                .then ((response) => {
+                    resolve(response.data)
+                })
+        })
+    },
+    updateTodo({commit}, payload){
+        return new Promise((resolve, reject) => {
+            Axios.put(`api/todo/${payload}`, payload)
+                .then ((response) => {
+                    resolve(response.data)
+                })
+        })
+    },
 }
 
 export default {

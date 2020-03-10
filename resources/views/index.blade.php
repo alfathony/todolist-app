@@ -12,7 +12,7 @@
 
     </head>
     <body>
-        <div class="container" id="app">
+        <div id="app">
             <todo-app></todo-app>
         </div>
     </body>

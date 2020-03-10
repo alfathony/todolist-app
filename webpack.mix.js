@@ -13,3 +13,28 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
+
+/**
+ * Versioning / Cache Busting
+ * https://laravel.com/docs/7.x/mix#versioning-and-cache-busting
+ */
+
+if (mix.inProduction()) {
+    mix.version();
+}
+
+/**
+ * Browsersync Reloading
+ * https://laravel.com/docs/7.x/mix#browsersync-reloading
+ */
+
+mix.browserSync({
+    proxy: 'todolist-app.test'
+});
+
+/**
+ * Disabled Bundle Notification
+ * https://laravel.com/docs/7.x/mix#notifications
+ */
+
+mix.disableNotifications();
