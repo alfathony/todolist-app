@@ -2,7 +2,7 @@
     <div class="container">
         <div class="table-responsive py-3">
             <router-link :to="{ name:'todo.add' }" class="btn btn-primary float-right mb-3">Tambah</router-link>
-            <b-table striped hover :items="todos.data" :fields="fields" show-empty>
+            <b-table striped hover :items="todos.data" :fields="fields" @row-clicked="detailPage" show-empty>
                 <template v-slot:cell(name)="row">
                     <div v-bind:class="{ 'coret': row.item.status == 1 }">{{ row.item.name }}</div>
                 </template>
@@ -99,6 +99,12 @@
                 alert(id);
                 this.updateTodo(id).then(() => {
                     this.getTodos()
+                })
+            },
+            detailPage(item){
+                this.$router.push({ name: 'todo.detail', params: {
+                    id: item.id
+                    }
                 })
             }
         }

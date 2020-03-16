@@ -2,6 +2,7 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 import TodoIndex from "./pages/todo/Index.vue"
 import TodoAdd from "./pages/todo/Add.vue"
+import TodoDetail from "./pages/todo/Detail.vue"
 import MovieIndex from "./pages/movie/Index.vue"
 import HomeIndex from "./pages/home/Index.vue"
 
@@ -18,6 +19,11 @@ const router = new VueRouter({
             path: '/todos',
             component: TodoIndex,
             name: 'todo.index'
+        },
+        {
+            path: '/todos/detail/:id',
+            component: TodoDetail,
+            name: 'todo.detail'
         },
         {
             path: '/todo/add',

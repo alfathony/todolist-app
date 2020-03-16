@@ -14,6 +14,12 @@ class TodoController extends Controller
         return response()->json(['status' => 'success', 'data' => $todos]);
     }
 
+    public function show($id)
+    {
+        $row = Todo::find($id);
+        return response()->json(['status' => 'success', 'data' => $row]);
+    }
+
     public function store(Request $request){
         // parsing due_date format
         $due_date = Carbon::parse($request->due_date)->format('Y-m-d');

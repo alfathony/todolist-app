@@ -2,12 +2,16 @@ import Axios from "axios";
 
 const state = () => ({
     todos: [],
+    todo: null,
     page: 1
 })
 
 const mutations = {
-    SET_TODOS(state, payload){
+    SET_TODOS(state, payload) {
         state.todos = payload
+    },
+    SET_TODO(state, payload){
+        state.todo = payload
     }
 }
 
@@ -17,6 +21,15 @@ const actions = {
             Axios.get(`/api/todo?page=${state.page}`)
                 .then((response) => {
                     commit('SET_TODOS', response.data.data)
+                    resolve(response.data)
+                })
+        })
+    },
+    getDetailTodo({commit}, payload){
+        return new Promise((resolve, reject) => {
+            Axios.get(`/api/todo/${payload}`)
+                .then((response) => {
+                    commit('SET_TODO', response.data.data)
                     resolve(response.data)
                 })
         })
